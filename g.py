@@ -46,7 +46,7 @@ class Travler:
 if __name__ == "__main__":
     testTravelar = Travler("a")
     visited=[]
-    target= "h"
+    target= "b"
       
     
     print(testTravelar.roads(nodes))
