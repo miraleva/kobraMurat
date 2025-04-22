@@ -23,13 +23,36 @@ class Travler:
         self.memo.pop()
         self.currentNode = self.memo[-1]
 
+    def dfs(self,nodes,target,visited):
+      
+        
+        if self.currentNode == target: 
+            return self.memo #baştan yapıyoz ki aramasın targetsa
+        
+        for i in self.roads(nodes): #i gidebileceğimiz node
+            if i in visited:
+                continue
+            self.currentNode = i
+            self.memo.append(i)
+            visited.append(i)
+
+        if self.dfs(nodes,target,visited):
+             self.dfs 
+        
+        self.backtrack()
+        return None #hedef bulunamazsa 
+
 
 if __name__ == "__main__":
     testTravelar = Travler("a")
-
+    visited=[]
+    target= "h"
+      
+    
     print(testTravelar.roads(nodes))
     testTravelar.walk(nodes)
     print(testTravelar.roads(nodes))
     testTravelar.walk(nodes)
     print(testTravelar.memo)
+    print(testTravelar.dfs(nodes,target,visited))
         
