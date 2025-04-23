@@ -37,7 +37,7 @@ class Travler:
             visited.append(i)
 
         if self.dfs(nodes,target,visited):
-             return self.dfs(nodes,target,visited)
+             return self.dfs(nodes,target,visited) #bulduysa sonucu returnle
         
         self.backtrack()
         return None #hedef bulunamazsa 
