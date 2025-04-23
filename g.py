@@ -13,7 +13,9 @@ class Travler:
         self.memo=[currentNode]
     
     def roads(self,nodes):
-        return nodes[self.currentNode]
+        if self.currentNode in nodes:
+            return nodes[self.currentNode]
+        
     
     def walk(self,nodes):
         self.currentNode = self.roads(nodes)[0] 
@@ -36,8 +38,9 @@ class Travler:
             self.memo.append(i)
             visited.append(i)
 
-        if self.dfs(nodes,target,visited):
-             return self.dfs(nodes,target,visited) #bulduysa sonucu returnle
+            result= self.dfs(nodes,target,visited)   
+            if result: 
+                return result  
         
         self.backtrack()
         return None #hedef bulunamazsa 
