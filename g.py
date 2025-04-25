@@ -15,6 +15,8 @@ class Travler:
     def roads(self,nodes):
         if self.currentNode in nodes:
             return nodes[self.currentNode]
+        else:
+            return [] 
         
     
     def walk(self,nodes):
@@ -49,7 +51,7 @@ class Travler:
 if __name__ == "__main__":
     testTravelar = Travler("a")
     visited=[]
-    target= "b"
+    target= "e"
       
     
     print(testTravelar.roads(nodes))
