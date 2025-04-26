@@ -27,8 +27,32 @@ class Travler:
         self.memo.pop()
         self.currentNode = self.memo[-1]
 
+    def bfs(self,nodes,target):
+        queue =[]
+        visited = set()
+        queue.append([self.currentNode])
+
+        while len(queue)>0:
+            path=queue[0]
+            
+            for i in nodes[path[-1]]:
+                
+                if i in visited:
+                    continue
+                visited.add(i)
+                
+                temp_path = path.copy()
+                temp_path.append(i)
+                queue.append(temp_path)
+                
+                if i == target:
+                    return temp_path
+                
+            queue.pop(0)
+        return []
+                    
+
     def dfs(self,nodes,target,visited):
-      
         
         if self.currentNode == target: 
             return self.memo #baştan yapıyoz ki aramasın targetsa
@@ -59,5 +83,15 @@ if __name__ == "__main__":
     print(testTravelar.roads(nodes))
     testTravelar.walk(nodes)
     print(testTravelar.memo)
-    print(testTravelar.dfs(nodes,target,visited))
-        
+    print("dfs ile g gidiyok")
+    testTravelar.currentNode="a"
+    print(testTravelar.dfs(nodes,"g",visited))
+    print("dfs ile h gidiyok")
+    testTravelar.currentNode="a"
+    print(testTravelar.dfs(nodes,"h",visited))
+    print("bfs ile g gidiyok")
+    testTravelar.currentNode="a"
+    print(testTravelar.bfs(nodes,"g"))
+    print("bfs ile h gidiyok")
+    testTravelar.currentNode="a"
+    print(testTravelar.bfs(nodes,"h"))
