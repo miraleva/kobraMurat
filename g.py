@@ -7,7 +7,6 @@ nodes ={"a":["b","c"],
 
 class Travler:
 
-
     def __init__(self,currentNode):
         self.currentNode= currentNode
         self.memo=[currentNode]
@@ -18,12 +17,12 @@ class Travler:
         else:
             return [] 
         
-    
     def walk(self,nodes):
         self.currentNode = self.roads(nodes)[0] 
         self.memo.append(self.currentNode)
     
     def backtrack(self):
+     if len(self.memo):        #ya tutarsa type thing
         self.memo.pop()
         self.currentNode = self.memo[-1]
 
@@ -49,10 +48,12 @@ class Travler:
                     return temp_path
                 
             queue.pop(0)
-        return []
-                    
+        return []          
 
     def dfs(self,nodes,target,visited):
+        if visited is None:
+            visited = set()      #yine de bi baksak mı 
+
         
         if self.currentNode == target: 
             return self.memo #baştan yapıyoz ki aramasın targetsa
@@ -71,13 +72,10 @@ class Travler:
         self.backtrack()
         return None #hedef bulunamazsa 
 
-
 if __name__ == "__main__":
     testTravelar = Travler("a")
-    visited=[]
     target= "e"
-      
-    
+
     print(testTravelar.roads(nodes))
     testTravelar.walk(nodes)
     print(testTravelar.roads(nodes))
@@ -85,10 +83,10 @@ if __name__ == "__main__":
     print(testTravelar.memo)
     print("dfs ile g gidiyok")
     testTravelar.currentNode="a"
-    print(testTravelar.dfs(nodes,"g",visited))
+    print(testTravelar.dfs(nodes,"g",[]))
     print("dfs ile h gidiyok")
     testTravelar.currentNode="a"
-    print(testTravelar.dfs(nodes,"h",visited))
+    print(testTravelar.dfs(nodes,"h",[]))
     print("bfs ile g gidiyok")
     testTravelar.currentNode="a"
     print(testTravelar.bfs(nodes,"g"))
