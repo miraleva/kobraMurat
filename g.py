@@ -68,8 +68,9 @@ class Travler:
             result= self.dfs(nodes,target,visited)   
             if result: 
                 return result  
-        
-        self.backtrack()
+            
+            while set(self.roads(nodes)).issubset(visited):
+                self.backtrack()
         return None #hedef bulunamazsa 
 
 if __name__ == "__main__":
